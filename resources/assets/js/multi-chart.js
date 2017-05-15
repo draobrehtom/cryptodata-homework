@@ -1,4 +1,7 @@
+var moment = require('moment');
 window.onload = function () {
+
+
     $(document).ready(function() {
         var coinMarketGraphs = [
             "market_global",
@@ -70,19 +73,33 @@ window.onload = function () {
     var test = [
     ];
 
-    function getDataPointsFromCSV (csv, name) {
+    function getDataPointsFromCSV (csv, name, title, color) {
         var dataPoints = csvLines = points = [];
         csvLines = csv.split(/[\r?\n|\r|\n]+/);
 
         var label = name;
-
+        var a=true;
         for (var i = 0; i < csvLines.length; i++)
             if (csvLines[i].length > 0) {
                 points = csvLines[i].split(",");
+                var readableData = moment.unix(points[0]/1000).format("DD MMM YYYY hh:mm a");
+
+
+                // secret formula
+                e1 = points[0]/3600*2*Math.PI;
+                b1 = points[1];
+                d1 = 2 * Math.log((Math.sqrt(5) + 1)/2)/Math.PI;
+
+                x = e1;
+                y = 2*Math.log(b1/e1)/d1;
+
                 dataPoints.push({
-                    x: parseFloat(points[0]),
-                    y: parseFloat(points[1]),
-                    indexLabel: ""
+                    color: color,
+                    showInLegend: true,
+                    x:  x,
+                    y: y,
+
+                    legendText: label
                 });
                 label = "";
             }
@@ -90,6 +107,7 @@ window.onload = function () {
         test.push({
             name: name,
             type: "line",
+
             dataPoints: dataPoints
         });
     }
@@ -100,6 +118,11 @@ window.onload = function () {
 
             title: {
                 text: "Multi global capitalization"
+            },
+            legend:{
+                fontSize: 20,
+                fontFamily: "tamoha",
+                fontColor: "Sienna"
             },
             data: data
         });

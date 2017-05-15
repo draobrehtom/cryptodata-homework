@@ -79,7 +79,13 @@ window.onload = function () {
     });
 
 
-
+    // y = 2*LN(B1/(E1))/$D$1
+    // x = Е1
+    //
+    // $D$1 = 2*LN((scrt(5)+1)/2)/ПИ()
+    //
+    // B1 - капитализация, y
+    // Е1 - время, в часах (timestamp/3600*2П)
 
 
     function getDataPointsFromCSV(csv, name, title) {
@@ -87,12 +93,25 @@ window.onload = function () {
         var dataPoints = csvLines = points = [];
         csvLines = csv.split(/[\r?\n|\r|\n]+/);
 
+        var x,y,b1,e1,d1;
+
         for (var i = 0; i < csvLines.length; i++)
             if (csvLines[i].length > 0) {
                 points = csvLines[i].split(",");
+
+                // secret formula
+                e1 = points[0]/3600*2*Math.PI;
+                b1 = points[1];
+                d1 = 2 * Math.log((Math.sqrt(5) + 1)/2)/Math.PI;
+
+                x = e1;
+                y = 2*Math.log(b1/e1)/d1;
+
+
+
                 dataPoints.push({
-                    x: parseFloat(points[0]),
-                    y: parseFloat(points[1])
+                    x: parseFloat(x),
+                    y: parseFloat(y)
                 });
             }
 
