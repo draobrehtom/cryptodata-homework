@@ -16,3 +16,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.js('resources/assets/js/chart.js', 'public/js');
 mix.js('resources/assets/js/multi-chart.js', 'public/js');
+
+mix.js('resources/assets/js/canvasjs.min.js', 'public/js');

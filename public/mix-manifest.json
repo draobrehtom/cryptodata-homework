@@ -2,5 +2,6 @@
   "/js/app.js": "/js/app.js",
   "/css/app.css": "/css/app.css",
   "/js/multi-chart.js": "/js/multi-chart.js",
-  "/js/chart.js": "/js/chart.js"
+  "/js/chart.js": "/js/chart.js",
+  "/js/canvasjs.min.js": "/js/canvasjs.min.js"
 }
