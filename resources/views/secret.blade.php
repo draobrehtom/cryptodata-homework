@@ -7,7 +7,7 @@
         <title>Secret Room</title>
         <link rel="stylesheet" href="css/app.css">
 
-        <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
         <script src="js/chart.js"></script>
 
