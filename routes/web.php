@@ -27,7 +27,7 @@ Route::group(['middleware' => 'cors'], function () {
         return view('multi');
     });
 
-    Route::get('/refresh/{graph}', 'Chart@refresh');
+    Route::get('/refresh/{graph?}/{type?}', 'Chart@refresh');
 
 });
 
